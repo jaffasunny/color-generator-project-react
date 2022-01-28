@@ -8,6 +8,7 @@ const SingleColor = ({ rgb, weight, hex, index }) => {
 
 	const handleClick = (e) => {
 		setAlert(true);
+		navigator.clipboard.writeText(hexValue);
 		setTimeout(() => {
 			setAlert(false);
 		}, 3000);
