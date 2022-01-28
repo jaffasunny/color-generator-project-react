@@ -4,11 +4,23 @@ import rgbToHex from "./utils";
 const SingleColor = ({ rgb, weight, hex, index }) => {
 	const [alert, setAlert] = useState(false);
 	const bcg = rgb.join(",");
+	const hexValue = `#${hex}`;
+
+	const handleClick = (e) => {
+		setAlert(true);
+		setTimeout(() => {
+			setAlert(false);
+		}, 3000);
+	};
 
 	return (
-		<article className={`color ${index > 10 && 'color-light'}`} style={{ backgroundColor: `rgb(${bcg})` }}>
+		<article
+			onClick={handleClick}
+			className={`color ${index > 10 && "color-light"}`}
+			style={{ backgroundColor: `rgb(${bcg})` }}>
 			<p className="percent-value">{weight}%</p>
-			<p className="percent-color">{hex}</p>
+			<p className="percent-color">{hexValue}</p>
+			{alert && <p className="alert">copied to the clipboard</p>}
 		</article>
 	);
 };
